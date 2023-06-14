@@ -5,7 +5,7 @@ import (
 	"math/big"
 )
 
-func GenerateKeypair() (privateKey, publicKey *big.Int) {
+func GenerateKeypair() (privateKey, publicKey, p, g *big.Int) {
 	p, g, buffer := new(big.Int), new(big.Int), new(big.Int)
 	// NIST recommended parameters
 	p.SetString("134078079299425970995740249982058461274793658205923933777235614437217640300735"+
