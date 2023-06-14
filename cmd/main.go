@@ -9,5 +9,5 @@ import (
 func main() {
 	difference := encryption.Minus(5, 3)
 	sum := signature.Plus(5, 3)
-	fmt.Printf("Difference: %d, sum: %d", difference, sum)
+	fmt.Printf("Різниця: %d, сума: %d", difference, sum)
 }
