@@ -1,5 +1,5 @@
 package encryption
 
-func minus(a, b int) int {
+func Minus(a, b int) int {
 	return a - b
 }

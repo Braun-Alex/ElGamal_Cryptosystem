@@ -1,5 +1,5 @@
 package signature
 
-func plus(a, b int) int {
+func Plus(a, b int) int {
 	return a + b
 }
