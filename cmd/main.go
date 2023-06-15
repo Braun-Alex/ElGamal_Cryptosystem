@@ -21,7 +21,7 @@ func main() {
 	cipherText := encryption.Encrypt(message, publicKey)
 	decryptedMessage := encryption.Decrypt(cipherText, privateKey)
 	// Deferred invoking has been implemented for the correct displaying all the data in the console
-	defer fmt.Print("Decrypted message: ", decryptedMessage)
+	defer fmt.Print("Decrypted message: \"", decryptedMessage, "\"")
 	defer fmt.Print("Ciphertext: ", cipherText, "\n")
 	defer fmt.Print("********* ElGamal encryption and decryption *********\n")
 	defer fmt.Print("Signature is valid: ", answer)
