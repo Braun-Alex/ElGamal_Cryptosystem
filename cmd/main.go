@@ -8,9 +8,9 @@ import (
 
 func main() {
 	message := "Hi"
-	privateKey, publicKey, p, g := keypair.GenerateKeypair()
-	r, s := signature.Sign(message, privateKey, p, g)
-	isValidSignature := signature.Verify(message, publicKey, r, s, p, g)
+	privateKey, publicKey := keypair.GenerateKeypair()
+	r, s := signature.Sign(message, privateKey)
+	isValidSignature := signature.Verify(message, publicKey, r, s)
 	if isValidSignature {
 		fmt.Print("Signature is valid")
 	} else {
