@@ -24,7 +24,7 @@ var G = big.NewInt(2)
 func GenerateKeypair() (*big.Int, *big.Int) {
 	privateKey, publicKey, buffer := new(big.Int), new(big.Int), new(big.Int)
 	privateKey, err := rand.Int(rand.Reader, buffer.Sub(P, big.NewInt(1)))
-	if err != nil {
+	if err != nil || privateKey.Cmp(big.NewInt(0)) == 0 {
 		panic("Private key could not be generated")
 	}
 	// Public key = g^a (mod p)

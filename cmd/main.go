@@ -2,14 +2,19 @@ package main
 
 import (
 	"ElGamal_Cryptosystem/pkg/keypair"
-	"ElGamal_Cryptosystem/pkg/signature"
+	//"ElGamal_Cryptosystem/pkg/signature"
+	"ElGamal_Cryptosystem/pkg/encryption"
 	"fmt"
 )
 
 func main() {
 	message := "ZK-STARK has big impact on StarkNet"
 	privateKey, publicKey := keypair.GenerateKeypair()
-	fmt.Print("*********** ElGamal cryptosystem ***********\n")
+	cipherText := encryption.Encrypt(message, publicKey)
+	fmt.Println(cipherText)
+	decryptedMessage := encryption.Decrypt(cipherText, privateKey)
+	fmt.Print(decryptedMessage)
+	/*fmt.Print("*********** ElGamal cryptosystem ***********\n")
 	defer fmt.Printf("Private key: %d\n", privateKey)
 	defer fmt.Printf("Public key: %d\n", publicKey)
 	fmt.Print("Message: \"", message, "\"\n")
@@ -23,5 +28,5 @@ func main() {
 		fmt.Print("yes\n")
 	} else {
 		fmt.Print("no\n")
-	}
+	}*/
 }

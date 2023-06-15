@@ -2,6 +2,7 @@ package signature
 
 import (
 	"ElGamal_Cryptosystem/pkg/keypair"
+	"crypto/rand"
 	"golang.org/x/crypto/sha3"
 	"math/big"
 )
@@ -14,7 +15,16 @@ func Sign(message string, privateKey *big.Int) (*big.Int, *big.Int) {
 	// Decremented module = p - 1
 	decrementedModule := new(big.Int).Sub(keypair.P, big.NewInt(1))
 	// Generation of session key
-	k := big.NewInt(5)
+	k, err := rand.Int(rand.Reader, decrementedModule)
+	if err != nil || k.Cmp(big.NewInt(0)) == 0 {
+		panic("Session key could not be generated")
+	}
+	for buffer.GCD(nil, nil, k, decrementedModule).Cmp(big.NewInt(1)) != 0 {
+		k, err = rand.Int(rand.Reader, decrementedModule)
+		if err != nil || k.Cmp(big.NewInt(0)) == 0 {
+			panic("Session key could not be generated")
+		}
+	}
 	r, s := new(big.Int), new(big.Int)
 	// Generating of component r
 	r.Exp(keypair.G, k, keypair.P)
