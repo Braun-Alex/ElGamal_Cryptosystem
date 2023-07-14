@@ -13,7 +13,7 @@ func TestCorrectSignature(test *testing.T) {
 	r, s := signature.Sign(message, privateKey)
 	isValidSignature := signature.Verify(message, publicKey, r, s)
 	if !isValidSignature {
-		test.Errorf("One does not accept correct ElGamal signature")
+		test.Error("One does not accept correct ElGamal signature")
 	}
 }
 
@@ -24,7 +24,7 @@ func TestIncorrectSignatureOnDifferentData(test *testing.T) {
 	r, s := signature.Sign(message, privateKey)
 	isValidSignature := signature.Verify(anotherMessage, publicKey, r, s)
 	if isValidSignature {
-		test.Errorf("One accepts incorrect ElGamal signature on different data")
+		test.Error("One accepts incorrect ElGamal signature on different data")
 	}
 }
 
@@ -35,7 +35,7 @@ func TestIncorrectSignatureOnDifferentKeys(test *testing.T) {
 	r, s := signature.Sign(message, privateKey)
 	isValidSignature := signature.Verify(message, anotherPublicKey, r, s)
 	if isValidSignature {
-		test.Errorf("One accepts incorrect ElGamal signature on another public key")
+		test.Error("One accepts incorrect ElGamal signature on another public key")
 	}
 }
 
@@ -47,7 +47,7 @@ func TestIncorrectSignatureOnIncorrectParameterR(test *testing.T) {
 	r.Add(r, big.NewInt(3))
 	isValidSignature := signature.Verify(message, anotherPublicKey, r, s)
 	if isValidSignature {
-		test.Errorf("One accepts incorrect ElGamal signature on changed parameter r")
+		test.Error("One accepts incorrect ElGamal signature on changed parameter r")
 	}
 }
 
@@ -59,6 +59,6 @@ func TestIncorrectSignatureOnIncorrectParameterS(test *testing.T) {
 	s.Add(s, big.NewInt(3))
 	isValidSignature := signature.Verify(message, anotherPublicKey, r, s)
 	if isValidSignature {
-		test.Errorf("One accepts incorrect ElGamal signature on changed parameter s")
+		test.Error("One accepts incorrect ElGamal signature on changed parameter s")
 	}
 }

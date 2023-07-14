@@ -14,7 +14,7 @@ func TestIncorrectDecryptionOnDifferentCiphertexts(test *testing.T) {
 	cipherText[0].Add(cipherText[0], big.NewInt(3))
 	decryptedMessage := encryption.Decrypt(cipherText, privateKey)
 	if decryptedMessage == message {
-		test.Errorf("One decrypts different ciphertexts and gets equal messages")
+		test.Error("One decrypts different ciphertexts and gets equal messages")
 	}
 }
 
@@ -25,7 +25,7 @@ func TestIncorrectDecryptionOnDifferentKeys(test *testing.T) {
 	cipherText := encryption.Encrypt(message, publicKey)
 	decryptedMessage := encryption.Decrypt(cipherText, anotherPrivateKey)
 	if decryptedMessage == message {
-		test.Errorf("One decrypts ciphertext by another private key and gets equal messages")
+		test.Error("One decrypts ciphertext by another private key and gets equal messages")
 	}
 }
 
@@ -35,7 +35,7 @@ func TestCorrectEncryptionAndDecryptionOnBlock(test *testing.T) {
 	cipherText := encryption.Encrypt(message, publicKey)
 	decryptedMessage := encryption.Decrypt(cipherText, privateKey)
 	if decryptedMessage != message {
-		test.Errorf("One encrypts and decrypts short message incorrectly")
+		test.Error("One encrypts and decrypts short message incorrectly")
 	}
 }
 
@@ -63,6 +63,6 @@ func TestCorrectEncryptionAndDecryptionOnBlocks(test *testing.T) {
 	cipherText := encryption.Encrypt(message, publicKey)
 	decryptedMessage := encryption.Decrypt(cipherText, privateKey)
 	if decryptedMessage != message {
-		test.Errorf("One encrypts and decrypts large message incorrectly")
+		test.Error("One encrypts and decrypts large message incorrectly")
 	}
 }
