@@ -1,8 +1,8 @@
 package signature
 
 import (
-	"ElGamal_Cryptosystem/pkg/keypair"
 	"crypto/rand"
+	"github.com/Braun-Alex/ElGamal_Cryptosystem/pkg/keypair"
 	"golang.org/x/crypto/sha3"
 	"math/big"
 )

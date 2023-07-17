@@ -1,8 +1,8 @@
 package test
 
 import (
-	"ElGamal_Cryptosystem/pkg/keypair"
-	"ElGamal_Cryptosystem/pkg/signature"
+	"github.com/Braun-Alex/ElGamal_Cryptosystem/pkg/keypair"
+	"github.com/Braun-Alex/ElGamal_Cryptosystem/pkg/signature"
 	"math/big"
 	"testing"
 )

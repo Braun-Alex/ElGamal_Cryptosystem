@@ -1,4 +1,4 @@
-module ElGamal_Cryptosystem
+module github.com/Braun-Alex/ElGamal_Cryptosystem
 
 go 1.19
 

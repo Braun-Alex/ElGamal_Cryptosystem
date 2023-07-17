@@ -1,8 +1,8 @@
 package encryption
 
 import (
-	"ElGamal_Cryptosystem/pkg/keypair"
 	"crypto/rand"
+	"github.com/Braun-Alex/ElGamal_Cryptosystem/pkg/keypair"
 	"math/big"
 )
 
